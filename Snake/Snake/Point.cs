@@ -1,19 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Snake
 {
     class Point
     {
-        public int x;
-        public int y;
-        public char sym;
+        private int _x;
+        private int _y;
+        private char _sym;
+
+        public Point()
+        {
+        }
+
+        public Point(int x, int y, char sym)
+        {
+            _x = x;
+            _y = y;
+            _sym = sym;
+        }
 
         public void Draw()
         {
-            Console.SetCursorPosition(x, y);
-            Console.Write(sym);
+            Console.SetCursorPosition(_x, _y);
+            Console.Write(_sym);
         }
     }
 }
