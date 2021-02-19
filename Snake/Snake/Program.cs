@@ -6,13 +6,15 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            HorizontalLine hLine1 = new HorizontalLine(5, 45, 8, '#');
-            HorizontalLine hLine2 = new HorizontalLine(5, 45, 28, '#');
+            Console.SetBufferSize(120, 30);
+
+            HorizontalLine hLine1 = new HorizontalLine(0, 78, 0, '#');
+            HorizontalLine hLine2 = new HorizontalLine(0, 78, 24, '#');
             hLine1.Drow();
             hLine2.Drow();
 
-            VerticalLine vLine1 = new VerticalLine(8, 28, 5, '#');
-            VerticalLine vLine2 = new VerticalLine(8, 28, 45, '#');
+            VerticalLine vLine1 = new VerticalLine(0, 24, 0, '#');
+            VerticalLine vLine2 = new VerticalLine(0, 24, 78, '#');
             vLine1.Drow();
             vLine2.Drow();
 
