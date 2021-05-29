@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Snake
@@ -36,6 +37,25 @@ namespace Snake
             Point nextPoint = new Point(head);
             nextPoint.Move(1, _direction);
             return nextPoint;
+        }
+
+        public void HandleKey(ConsoleKey key)
+        {
+            switch (key)
+            {
+                case ConsoleKey.LeftArrow:
+                    _direction = Direction.LEFT;
+                    break;
+                case ConsoleKey.RightArrow:
+                    _direction = Direction.RIGHT;
+                    break;
+                case ConsoleKey.UpArrow:
+                    _direction = Direction.UP;
+                    break;
+                case ConsoleKey.DownArrow:
+                    _direction = Direction.DOWN;
+                    break;
+            }
         }
     }
 }

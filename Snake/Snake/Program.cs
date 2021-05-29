@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Snake
 {
@@ -22,7 +23,21 @@ namespace Snake
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Draw();
-            snake.Move();
+
+            bool escape = false;
+            while (!escape)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key);
+
+                    if (key.Key == ConsoleKey.Escape) escape = true;
+                }
+
+                Thread.Sleep(100);
+                snake.Move();
+            }
 
             Console.ReadLine();
         }
