@@ -8,6 +8,12 @@ namespace Snake
         private int _y;
         private char _sym;
 
+        public char Sym
+        {
+            get => _sym;
+            set => _sym = value;
+        }
+
         public Point()
         {
         }
@@ -49,6 +55,14 @@ namespace Snake
         {
             _sym = ' ';
             Draw();
+        }
+
+        /// <summary>Проверить, является ли следующая точка едой.</summary>
+        /// <param name="food">Следующая точка.</param>
+        /// <returns>Является / не является.</returns>
+        internal bool IsHit(Point nextPoint)
+        {
+            return nextPoint._x == this._x && nextPoint._y == this._y;
         }
 
         public void Draw()
