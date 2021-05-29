@@ -28,20 +28,38 @@ namespace Snake
 
         public void Move(int offset, Direction direction)
         {
-            if (direction == Direction.RIGHT)
-                _x += offset;
-            else if(direction == Direction.LEFT)
-                _x -= offset;
-            else if (direction == Direction.UP)
-                _y += offset;
-            else if (direction == Direction.DOWN)
-                _y -= offset;
+            switch (direction)
+            {
+                case Direction.RIGHT: 
+                    _x += offset;
+                    break;
+                case Direction.LEFT:
+                    _x -= offset;
+                    break;
+                case Direction.UP:
+                    _y += offset;
+                    break;
+                case Direction.DOWN:
+                    _y -= offset;
+                    break;
+            }
+        }
+
+        internal void Clear()
+        {
+            _sym = ' ';
+            Draw();
         }
 
         public void Draw()
         {
             Console.SetCursorPosition(_x, _y);
             Console.Write(_sym);
+        }
+
+        public override string ToString()
+        {
+            return _x + ", " + _y + ", " + _sym;
         }
     }
 }
