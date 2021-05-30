@@ -9,15 +9,8 @@ namespace Snake
         {
             Console.SetBufferSize(140, 50);
 
-            HorizontalLine hLine1 = new HorizontalLine(0, 78, 0, '#');
-            HorizontalLine hLine2 = new HorizontalLine(0, 78, 24, '#');
-            Draw(hLine1);
-            Draw(hLine2);
-
-            VerticalLine vLine1 = new VerticalLine(0, 24, 0, '#');
-            VerticalLine vLine2 = new VerticalLine(0, 24, 78, '#');
-            Draw(vLine1);
-            Draw(vLine2);
+            Walls walls = new Walls(80, 25);
+            walls.Draw();
 
             Point p = new Point(4, 5, '*');
             Figure fSnake = new Snake(p, 4, Direction.RIGHT);
@@ -31,6 +24,8 @@ namespace Snake
             bool escape = false;
             while (!escape)
             {
+                if (walls.IsHit(snake) || snake.IsHitTail()) break;
+
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
