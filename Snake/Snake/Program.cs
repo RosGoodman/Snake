@@ -11,18 +11,18 @@ namespace Snake
 
             HorizontalLine hLine1 = new HorizontalLine(0, 78, 0, '#');
             HorizontalLine hLine2 = new HorizontalLine(0, 78, 24, '#');
-            hLine1.Draw();
-            hLine2.Draw();
+            Draw(hLine1);
+            Draw(hLine2);
 
             VerticalLine vLine1 = new VerticalLine(0, 24, 0, '#');
             VerticalLine vLine2 = new VerticalLine(0, 24, 78, '#');
-            vLine1.Draw();
-            vLine2.Draw();
-
+            Draw(vLine1);
+            Draw(vLine2);
 
             Point p = new Point(4, 5, '*');
-            Snake snake = new Snake(p, 4, Direction.RIGHT);
-            snake.Draw();
+            Figure fSnake = new Snake(p, 4, Direction.RIGHT);
+            Draw(fSnake);
+            Snake snake = (Snake)fSnake;
 
             FoodCreator foodCreator = new FoodCreator(80, 25, '$');
             Point food = foodCreator.CreateFood();
@@ -48,6 +48,11 @@ namespace Snake
                 }
 
                 Thread.Sleep(300);
+            }
+
+            static void Draw(Figure figure)
+            {
+                figure.Draw();
             }
 
             Console.ReadLine();
